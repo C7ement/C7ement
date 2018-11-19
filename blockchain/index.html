@@ -6,14 +6,21 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"
             integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
             crossorigin="anonymous"></script>
-    <script type="text/javascript" src="../js/webService.js" defer></script>
+    <script type="text/javascript" src="../js/blockExplorer.js" defer></script>
 
 </head>
 <body>
 
-<h1>Explorateur Bitcoin</h1>
+<div class="container-fluid">
 
-<table id="blockExplorer"></table>
+    <div class="row justify-content-center">
+        <h1 class="h2 mt-5 mb-4">Latest blocks</h1>
+    </div>
+
+    <div class="row my-5 justify-content-center">
+        <table id="blockExplorer" class="table mt-4 col-10 text-center"></table>
+    </div>
+</div>
 
 </body>
 </html>

@@ -1,10 +1,39 @@
+function newTh(content) {
+    let th = document.createElement('th');
+    th.appendChild(document.createTextNode(content))
+    return th;
+}
+
+function newTd(content) {
+    let td = document.createElement('td');
+    td.appendChild(document.createTextNode(content))
+    return td;
+}
+
+function displayBlockHead(table) {
+    let tr;
+    tr = document.createElement('tr');
+    tr.className = "thead-light";
+    tr.appendChild(newTh('Height'));
+    tr.appendChild(newTh('Date'));
+    tr.appendChild(newTh('Time'));
+    tr.appendChild(newTh('Transactions'));
+    tr.appendChild(newTh('Total sent'));
+    tr.appendChild(newTh('Total fees'));
+    table.appendChild(tr);
+}
+
 function displayBlock(block) {
-    var table, td, tr, i;
+    let table, tr, date;
+    date = new Date(block.received_time);
     table = document.getElementById('blockExplorer');
     tr = document.createElement('tr');
-    td = document.createElement('td');
-    td.appendChild(document.createTextNode(block.height));
-    tr.appendChild(td);
+    tr.appendChild(newTd(block.height));
+    tr.appendChild(newTd(date.toLocaleDateString()));
+    tr.appendChild(newTd(date.toLocaleTimeString()));
+    tr.appendChild(newTd(block.n_tx.toLocaleString()));
+    tr.appendChild(newTd((block.total/100000000).toLocaleString(undefined, {maximumFractionDigits: 0})+" BTC"));
+    tr.appendChild(newTd((block.fees/100000000).toLocaleString()+" BTC"));
     table.appendChild(tr);
 }
 
@@ -18,33 +47,13 @@ function displayAndGetNext(block) {
 
 $(document).ready(function() {
 
-    var table, th, tr, i, url, d;
-    d = document;
-    table = d.getElementById('blockExplorer');
-    table.className = "table";
-    tr = d.createElement('tr');
-    tr.className = "thead-light";
-    th = d.createElement('th');
-    th.appendChild(d.createTextNode('height'));
-    tr.appendChild(th);
-    th = d.createElement('th');
-    th.appendChild(d.createTextNode('Age'));
-    tr.appendChild(th);
-    th = d.createElement('th');
-    th.appendChild(d.createTextNode('fees'));
-    tr.appendChild(th);
-    th = d.createElement('th');
-    th.appendChild(d.createTextNode('peer_count'));
-    tr.appendChild(th);
-    table.appendChild(tr);
+    var table, th, tr, i, url;
+
+    table = document.getElementById('blockExplorer');
+    displayBlockHead(table);
 
     $.get("https://api.blockcypher.com/v1/btc/main").then(function(chain) {
-        return $.get(chain.latest_url);
-    }).then(displayAndGetNext).then(displayAndGetNext);
-});
 
-function createLine(blockData) {
-    for (i=0; i<10; i++) {
-    }
-    return blockData.prev_block_url;
-}
+        return $.get(chain.latest_url);
+    }).then(displayAndGetNext).then(displayAndGetNext).then(displayAndGetNext);
+});
