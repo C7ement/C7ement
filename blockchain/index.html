@@ -9,18 +9,70 @@
     <script type="text/javascript" src="../js/blockExplorer.js" defer></script>
 
 </head>
-<body>
+<body onload="latestBlocks()">
 
-<div class="container-fluid">
+<div class="jumbotron jumbotron-fluid">
 
-    <div class="row justify-content-center">
-        <h1 class="h2 mt-5 mb-4">Latest blocks</h1>
-    </div>
+    <div class="container-fluid">
 
-    <div class="row my-5 justify-content-center">
-        <table id="blockExplorer" class="table mt-4 col-10 text-center"></table>
+        <div class="row justify-content-center">
+            <h1 class="h2 mt-5 mb-4">Latest blocks</h1>
+        </div>
+
+        <div class="row my-5 justify-content-center">
+            <table id="tab1" class="table mt-4 col-10 text-center">
+                <thead class="bg-dark text-light"></thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
     </div>
 </div>
+
+<div class="jumbotron jumbotron-fluid">
+    <div class="container-fluid">
+
+        <div class="row justify-content-center">
+            <h1 class="h2 mt-5 mb-4">Research a block</h1>
+        </div>
+
+        <div class="row my-5 justify-content-center">
+            <table id="tab2" class="table mt-4 col-10 text-center">
+                <thead class = "bg-dark text-light"></thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+        <div class="row my-5 justify-content-center">
+            <input type="search" class="form-control mx-2 col-10 col-md-4 col-lg-1" placeholder="Block Height" id="blockHeight" onsearch="searchBlock()"><br>
+            <button class="btn btn-outline-secondary" onclick="searchBlock()">Search</button>
+        </div>
+
+    </div>
+</div>
+
+<div class="jumbotron jumbotron-fluid">
+    <div class="container-fluid">
+
+        <div class="row justify-content-center">
+            <h1 class="h2 mt-5 mb-4">Research a transaction</h1>
+        </div>
+
+        <div class="row my-5 justify-content-center">
+            <table id="tab3" class="table mt-4 col-10 text-center">
+                <thead class = "bg-dark text-light"></thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+        <div class="row my-5 justify-content-center">
+            <input type="search" class="form-control mx-2 col-10 col-md-4 col-lg-1" placeholder="Transaction Hash" id="transactionHash" onsearch="searchTransaction()"><br>
+            <button class="btn btn-outline-secondary" onclick="searchTransaction()">Search</button>
+        </div>
+
+    </div>
+</div>
+
 
 </body>
 </html>
