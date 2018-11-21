@@ -1,6 +1,6 @@
 function newTd(content) {
     let td = document.createElement('td');
-    td.appendChild(document.createTextNode(content))
+    td.appendChild(document.createTextNode(content));
     return td;
 }
 
@@ -46,20 +46,16 @@ function displayTransactionHead(tab) {
 }
 
 function displayTransaction(tran,tab) {
-    let tr, date, addressTab, address, i, hash;
-    var txtnode;
+    let tr, date, addressTab, address, i, td;
 
     date = new Date(tran.received);
-    address =tran.address+'';
-    addressTab = address.split(',');
+    addressTab = (tran.addresses+'').split(',');
     address = "";
     for (i=0; i<addressTab.length; i++) {
         address += addressTab[i]+' ';
     }
-    txtnode = new Text(tran.hash);
-    hash = txtnode.splitText(25);
     tr = document.createElement('tr');
-    tr.appendChild(newTd(hash[0]+' '+hash[1]));
+    tr.appendChild(newTd(tran.hash.substring(0,32)+" "+tran.hash.substring(32,64)));
     tr.appendChild(newTd(tran.block_height));
     tr.appendChild(newTd(address));
     tr.appendChild(newTd((tran.total/100000000).toLocaleString(undefined, {maximumFractionDigits: 0})+" BTC"));
