@@ -32,8 +32,7 @@ function displayBlock(block,tab) {
 }
 
 function displayTransactionHead(tab) {
-    let tr, thead;
-    thead = document.getElementById(tab).children[0];
+    let tr;
     tr = document.createElement('tr');
     tr.appendChild(newTd('Hash'));
     tr.appendChild(newTd('Block height'));
@@ -43,24 +42,33 @@ function displayTransactionHead(tab) {
     tr.appendChild(newTd('Date'));
     tr.appendChild(newTd('Time'));
     tr.appendChild(newTd('Confirmations'));
-    thead.appendChild(tr);
+    document.getElementById(tab).children[0].appendChild(tr);
 }
 
 function displayTransaction(tran,tab) {
-    let tbody, tr, date;
-    date = new Date(tran.received_time);
-    tbody = document.getElementById(tab).children[1];
+    let tr, date, addressTab, address, i, hash;
+    var txtnode;
+
+    date = new Date(tran.received);
+    address =tran.address+'';
+    addressTab = address.split(',');
+    address = "";
+    for (i=0; i<addressTab.length; i++) {
+        address += addressTab[i]+' ';
+    }
+    txtnode = new Text(tran.hash);
+    hash = txtnode.splitText(25);
     tr = document.createElement('tr');
-    tr.appendChild(newTd(tran.hash));
+    tr.appendChild(newTd(hash[0]+' '+hash[1]));
     tr.appendChild(newTd(tran.block_height));
-    tr.appendChild(newTd(tran.addresses));
+    tr.appendChild(newTd(address));
     tr.appendChild(newTd((tran.total/100000000).toLocaleString(undefined, {maximumFractionDigits: 0})+" BTC"));
     tr.appendChild(newTd((tran.fees/100000000).toLocaleString()+" BTC"));
     tr.appendChild(newTd(date.toLocaleDateString()));
     tr.appendChild(newTd(date.toLocaleTimeString()));
     tr.appendChild(newTd(tran.confirmations));
 
-    tbody.appendChild(tr);
+    document.getElementById(tab).children[1].appendChild(tr);
 }
 
 
