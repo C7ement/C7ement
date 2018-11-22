@@ -9,7 +9,7 @@
     <script type="text/javascript" src="../js/blockExplorer.js" charset="utf-8"></script>
 
 </head>
-<body>
+<body onload="latestBlocks()">
 
 <div class="jumbotron jumbotron-fluid">
 
@@ -57,8 +57,11 @@
         <div class="row justify-content-center">
             <h1 class="h2 mt-5 mb-4">Research a transaction</h1>
         </div>
+        <p class="small">hash exemple: f854aebae95150b379cc1187d848d58225f3c4157fe992bcd166f58bd5063449</p>
+
 
         <div class="row my-5 justify-content-center">
+            <div id="tran1"></div>
             <table id="tab3" class="table mt-4 col-10 text-center">
                 <thead class = "bg-dark text-light"></thead>
                 <tbody></tbody>

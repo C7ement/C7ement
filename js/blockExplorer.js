@@ -3,6 +3,14 @@ function newTd(content) {
     td.appendChild(document.createTextNode(content));
     return td;
 }
+function newTr(content) {
+    let td, tr;
+    td = document.createElement('td');
+    tr = document.createElement('tr');
+    td.appendChild(document.createTextNode(content));
+    tr.appendChild(td);
+    return tr;
+}
 
 function displayBlockHead(tab) {
     let tr, thead;
@@ -31,40 +39,36 @@ function displayBlock(block,tab) {
     tbody.appendChild(tr);
 }
 
-function displayTransactionHead(tab) {
-    let tr;
-    tr = document.createElement('tr');
-    tr.appendChild(newTd('Hash'));
-    tr.appendChild(newTd('Block height'));
-    tr.appendChild(newTd('Adresses'));
-    tr.appendChild(newTd('Total sent'));
-    tr.appendChild(newTd('Total fees'));
-    tr.appendChild(newTd('Date'));
-    tr.appendChild(newTd('Time'));
-    tr.appendChild(newTd('Confirmations'));
-    document.getElementById(tab).children[0].appendChild(tr);
-}
+function displayTransaction(tran,div) {
+    let date, i, table, tbody, thead;
 
-function displayTransaction(tran,tab) {
-    let tr, date, addressTab, address, i, td;
+    table = document.createElement('table');
+    thead = document.createElement('thead');
+    tbody = document.createElement('tbody');
+    table.className = "table mt-4 col-10 text-center";
+    thead.className = "bg-dark text-light";
 
     date = new Date(tran.received);
-    addressTab = (tran.addresses+'').split(',');
-    address = "";
-    for (i=0; i<addressTab.length; i++) {
-        address += addressTab[i]+' ';
-    }
-    tr = document.createElement('tr');
-    tr.appendChild(newTd(tran.hash.substring(0,32)+" "+tran.hash.substring(32,64)));
-    tr.appendChild(newTd(tran.block_height));
-    tr.appendChild(newTd(address));
-    tr.appendChild(newTd((tran.total/100000000).toLocaleString(undefined, {maximumFractionDigits: 0})+" BTC"));
-    tr.appendChild(newTd((tran.fees/100000000).toLocaleString()+" BTC"));
-    tr.appendChild(newTd(date.toLocaleDateString()));
-    tr.appendChild(newTd(date.toLocaleTimeString()));
-    tr.appendChild(newTd(tran.confirmations));
 
-    document.getElementById(tab).children[1].appendChild(tr);
+    thead.appendChild(newTr(tran.hash));
+    tbody.appendChild(newTr("inputs"));
+    for (i=0; i<tran.inputs.length; i++) {
+        tbody.appendChild(newTr(tran.inputs[i].addresses[0]));
+    }
+    tbody.appendChild(newTr("outputs"));
+    for (i=0; i<tran.outputs.length; i++) {
+        tbody.appendChild(newTr(tran.outputs[i].addresses[0]));
+    }
+    tbody.appendChild(newTr(tran.block_height));
+    tbody.appendChild(newTr((tran.total/100000000).toLocaleString(undefined, {maximumFractionDigits: 0})+" BTC"));
+    tbody.appendChild(newTr((tran.fees/100000000).toLocaleString()+" BTC"));
+    tbody.appendChild(newTr(date.toLocaleDateString()));
+    tbody.appendChild(newTr(date.toLocaleTimeString()));
+    tbody.appendChild(newTr(tran.confirmations));
+
+    table.appendChild(thead);
+    table.appendChild(tbody);
+    document.getElementById(div).appendChild(table);
 }
 
 
@@ -77,18 +81,18 @@ function displayIntab2(block) {
     displayBlock(block,'tab2');
 }
 
-function displayIntab3(tran) {
-    displayTransaction(tran,'tab3');
+function displayInTran1(tran) {
+    displayTransaction(tran,'tran1');
 }
 
 
-function latestBlocks() {
+function latestBlocks() {/*
 
     displayBlockHead('tab1');
 
-        $.get("https://api.blockcypher.com/v1/btc/main").then(function(chain) {
-            return $.get(chain.latest_url);
-        }).then(displayAndGetNext).then(displayAndGetNext).then(displayAndGetNext);
+    $.get("https://api.blockcypher.com/v1/btc/main?token=abd583bddb494903be6472d67069f5af").then(function(chain) {
+        return $.get(chain.latest_url);
+    }).then(displayAndGetNext).then(displayAndGetNext).then(displayAndGetNext);*/
 }
 
 function searchBlock() {
@@ -97,16 +101,12 @@ function searchBlock() {
         displayBlockHead('tab2');
     }
     var x = document.getElementById("blockHeight");
-    $.get("https://api.blockcypher.com/v1/btc/main/blocks/"+x.value+"?txstart=1&limit=1").then(displayIntab2);
+    $.get("https://api.blockcypher.com/v1/btc/main/blocks/"+x.value+"?txstart=1&limit=1&token=abd583bddb494903be6472d67069f5af").then(displayIntab2);
     /*scrollto*/
 }
 
 function searchTransaction() {
-    let trTab = document.getElementById('tab3').getElementsByTagName('tr');
-    if (!trTab.length) {
-        displayTransactionHead('tab3');
-    }
     var x = document.getElementById("transactionHash");
-    $.get("https://api.blockcypher.com/v1/btc/main/txs/"+x.value).then(displayIntab3);
+    $.get("https://api.blockcypher.com/v1/btc/main/txs/"+x.value).then(displayInTran1);
     /*scrollto*/
 }
