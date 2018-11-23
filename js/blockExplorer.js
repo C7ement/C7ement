@@ -44,27 +44,30 @@ function displayTransaction(tran,divT) {
     let date, i, div, html;
 
     div = document.getElementById(divT);
-    html = "<h1 class = 'h1'>"+tran.hash+"</h1>";
 
     date = new Date(tran.received);
 
-    html += "<table class = 'table mt-4 col-10 text-center'><thead><tr><td>Inputs</td></tr></thead><tbody>";
+    html = "<div class='row justify-content-center mt-5'><p class = 'font-weight-bold'>"+tran.hash+"</p></div>";
+    html += "<div class='row justify-content-center mt-4 mb-5'>";
+    html += "<table class='table tabTran table-bordered text-center w-auto col-auto my-auto'><thead><tr><td colspan='2'>Inputs</td></tr></thead><tbody>";
     for (i=0; i<tran.inputs.length; i++) {
-        html += "<tr><td>"+tran.inputs[0].addresses[0]+"</td></tr>";
+        html += "<tr><td>"+tran.inputs[i].addresses[0]+"</td><td>"+(tran.inputs[i].output_value/100000000).toLocaleString(undefined, {maximumSignificantDigits: 3})+" BTC</td></tr>";
     }
-    html += "</tbody></table>";
+    html += "</tbody>";
 
-    html += "<table class = 'table mt-4 col-10 text-center'><thead><tr><td>Outputs</td></tr></thead><tbody>";
+    html += "<thead><tr><td colspan='2'>Outputs</td></tr></thead><tbody>";
     for (i=0; i<tran.outputs.length; i++) {
-        html += "<tr><td>"+tran.outputs[i].addresses[0]+"</td></tr>";
+        html += "<tr><td>"+tran.outputs[i].addresses[0]+"</td><td>"+(tran.outputs[i].value/100000000).toLocaleString(undefined, {maximumSignificantDigits: 3})+" BTC</td></tr>";
     }
     html += "</tbody></table>";
-    html += "<p>"+tran.block_height+"</p>";
-    html += "<p>"+(tran.total/100000000).toLocaleString(undefined, {maximumFractionDigits: 0})+" BTC</p>";
-    html += "<p>"+(tran.fees/100000000).toLocaleString()+" BTC</p>";
-    html += "<p>"+date.toLocaleDateString()+"</p>";
-    html += "<p>"+date.toLocaleTimeString()+"</p>";
-    html += "<p>"+tran.confirmations+"</p>";
+    html += "<div class='col-auto my-auto text-center'>";
+    html += "<p class='my-3'>"+date.toLocaleDateString()+"</p>";
+    html += "<p class='my-3'>"+date.toLocaleTimeString()+"</p>";
+    html += "<p class='my-3'>Sent "+(tran.total/100000000).toLocaleString(undefined, {maximumSignificantDigits: 3})+" BTC</p>";
+    html += "<p class='my-3'>Fees "+(tran.fees/100000000).toLocaleString(undefined, {maximumSignificantDigits: 3})+" BTC</p>";
+    html += "<p class='my-3'>Block "+tran.block_height+"</p>";
+    html += "<p class='my-3'>Confirmed "+tran.confirmations+" times</p>";
+    html += "</div</div>";
     div.innerHTML = html;
 }
 
@@ -105,5 +108,6 @@ function searchBlock() {
 function searchTransaction() {
     var x = document.getElementById("transactionHash");
     $.get("https://api.blockcypher.com/v1/btc/main/txs/"+x.value).then(displayInTran1);
+    /*$.get("https://api.blockcypher.com/v1/btc/main/txs/5404e339ba82e6e52fcc24cb40029bed8425baa4c7f869626ef9de956186f910").then(displayInTran1);*/
     /*scrollto*/
 }
