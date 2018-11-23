@@ -39,36 +39,33 @@ function displayBlock(block,tab) {
     tbody.appendChild(tr);
 }
 
-function displayTransaction(tran,div) {
-    let date, i, table, tbody, thead;
+function displayTransaction(tran,divT) {
 
-    table = document.createElement('table');
-    thead = document.createElement('thead');
-    tbody = document.createElement('tbody');
-    table.className = "table mt-4 col-10 text-center";
-    thead.className = "bg-dark text-light";
+    let date, i, div, html;
+
+    div = document.getElementById(divT);
+    html = "<h1 class = 'h1'>"+tran.hash+"</h1>";
 
     date = new Date(tran.received);
 
-    thead.appendChild(newTr(tran.hash));
-    tbody.appendChild(newTr("inputs"));
+    html += "<table class = 'table mt-4 col-10 text-center'><thead><tr><td>Inputs</td></tr></thead><tbody>";
     for (i=0; i<tran.inputs.length; i++) {
-        tbody.appendChild(newTr(tran.inputs[i].addresses[0]));
+        html += "<tr><td>"+tran.inputs[0].addresses[0]+"</td></tr>";
     }
-    tbody.appendChild(newTr("outputs"));
-    for (i=0; i<tran.outputs.length; i++) {
-        tbody.appendChild(newTr(tran.outputs[i].addresses[0]));
-    }
-    tbody.appendChild(newTr(tran.block_height));
-    tbody.appendChild(newTr((tran.total/100000000).toLocaleString(undefined, {maximumFractionDigits: 0})+" BTC"));
-    tbody.appendChild(newTr((tran.fees/100000000).toLocaleString()+" BTC"));
-    tbody.appendChild(newTr(date.toLocaleDateString()));
-    tbody.appendChild(newTr(date.toLocaleTimeString()));
-    tbody.appendChild(newTr(tran.confirmations));
+    html += "</tbody></table>";
 
-    table.appendChild(thead);
-    table.appendChild(tbody);
-    document.getElementById(div).appendChild(table);
+    html += "<table class = 'table mt-4 col-10 text-center'><thead><tr><td>Outputs</td></tr></thead><tbody>";
+    for (i=0; i<tran.outputs.length; i++) {
+        html += "<tr><td>"+tran.outputs[i].addresses[0]+"</td></tr>";
+    }
+    html += "</tbody></table>";
+    html += "<p>"+tran.block_height+"</p>";
+    html += "<p>"+(tran.total/100000000).toLocaleString(undefined, {maximumFractionDigits: 0})+" BTC</p>";
+    html += "<p>"+(tran.fees/100000000).toLocaleString()+" BTC</p>";
+    html += "<p>"+date.toLocaleDateString()+"</p>";
+    html += "<p>"+date.toLocaleTimeString()+"</p>";
+    html += "<p>"+tran.confirmations+"</p>";
+    div.innerHTML = html;
 }
 
 
