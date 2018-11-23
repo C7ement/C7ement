@@ -10,13 +10,13 @@
     <script type="text/javascript" src="../js/blockExplorer.js" charset="utf-8"></script>
 
 </head>
-<body onload="searchTransaction()">
+<body onload="searchAddress()">
 
 
 <div class="container-fluid">
 
     <div class="row justify-content-center">
-        <h1 class="h2 mt-5 mb-4">Latest blocks</h1>
+        <h1 class="h2 mt-5 mb-4 smCaps">latest blocks</h1>
     </div>
 
     <div class="row my-5 justify-content-center">
@@ -30,7 +30,7 @@
 <div class="container-fluid">
 
     <div class="row justify-content-center">
-        <h1 class="h2 mt-5 mb-4">Research a block</h1>
+        <h1 class="h2 mt-5 mb-4 smCaps">research a block</h1>
     </div>
 
     <div class="row my-5 justify-content-center">
@@ -50,7 +50,7 @@
 <div class="container-fluid">
 
     <div class="row justify-content-center">
-        <h1 class="h2 mt-5 mb-4">Research a transaction</h1>
+        <h1 class="h2 mt-5 mb-4 smCaps">research a transaction</h1>
     </div>
     <p class="small">hash exemple: f854aebae95150b379cc1187d848d58225f3c4157fe992bcd166f58bd5063449</p>
 
@@ -60,6 +60,22 @@
 
     <div class="row my-5 justify-content-center">
         <input type="search" class="form-control mx-2 col-10 col-md-4 col-lg-1" placeholder="Transaction Hash" id="transactionHash" onsearch="searchTransaction()"><br>
+        <button class="btn btn-outline-secondary" onclick="searchTransaction()">Search</button>
+    </div>
+
+</div>
+
+<div class="container-fluid">
+
+    <div class="row justify-content-center">
+        <h1 class="h2 mt-5 mb-4 smCaps">research an address</h1>
+    </div>
+
+
+    <div id="address1" class="container-fluid"></div>
+
+    <div class="row my-5 justify-content-center">
+        <input type="search" class="form-control mx-2 col-10 col-md-4 col-lg-1" placeholder="btc address" id="address" onsearch="searchAddress()"><br>
         <button class="btn btn-outline-secondary" onclick="searchTransaction()">Search</button>
     </div>
 

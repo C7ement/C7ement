@@ -1,3 +1,7 @@
-.tabTran thead {
+.bgG {
     background-color: #10d078;
+}
+
+.smCaps {
+    font-variant: small-caps;
 }
