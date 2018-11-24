@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title> block explorer </title>
+    <title> Search </title>
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="../css/custom.css">
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"
@@ -10,7 +10,14 @@
     <script type="text/javascript" src="../js/blockExplorer.js" charset="utf-8"></script>
 
 </head>
-<body onload="searchAddress()">
+<body onload="latestBlocks()">
+
+<form action="address.html" method="GET">
+    <input type="text" class="form-control mx-2 col-10 col-md-4 col-lg-1" placeholder="btc address" id="addr"><br>
+    <button class="btn btn-outline-secondary" onclick="searchTransaction()">Search</button>
+    <input type="submit" name="submit" value="Send data">
+</form>
+
 
 
 <div class="container-fluid">
@@ -20,10 +27,7 @@
     </div>
 
     <div class="row my-5 justify-content-center">
-        <table id="tab1" class="table mt-4 col-10 text-center">
-            <thead class="bg-dark text-light"></thead>
-            <tbody></tbody>
-        </table>
+        <div id="blockElement1" class="container-fluid"></div>
     </div>
 </div>
 
@@ -33,17 +37,20 @@
         <h1 class="h2 mt-5 mb-4 smCaps">research a block</h1>
     </div>
 
-    <div class="row my-5 justify-content-center">
-        <table id="tab2" class="table mt-4 col-10 text-center">
-            <thead class = "bg-dark text-light"></thead>
-            <tbody></tbody>
-        </table>
-    </div>
+    <div id="blockElement2" class="container-fluid"></div>
 
     <div class="row my-5 justify-content-center">
         <input type="search" class="form-control mx-2 col-10 col-md-4 col-lg-1" placeholder="Block Height" id="blockHeight" onsearch="searchBlock()"><br>
         <button class="btn btn-outline-secondary" onclick="searchBlock()">Search</button>
     </div>
+    <form name="parameters" method="GET" action="block.html" target="_parent">
+        <p> Login:
+            <input type="text" name="block">
+        </p>
+        <p>
+            <input type="submit" name="submit" value="Send data">
+        </p>
+    </form>
 
 </div>
 
@@ -62,6 +69,14 @@
         <input type="search" class="form-control mx-2 col-10 col-md-4 col-lg-1" placeholder="Transaction Hash" id="transactionHash" onsearch="searchTransaction()"><br>
         <button class="btn btn-outline-secondary" onclick="searchTransaction()">Search</button>
     </div>
+    <form name="parameters" method="GET" action="transaction.html" target="_parent">
+        <p> Login:
+            <input type="text" name="transaction" value="">
+        </p>
+        <p>
+            <input type="submit" name="submit" value="Send data">
+        </p>
+    </form>
 
 </div>
 
@@ -76,8 +91,16 @@
 
     <div class="row my-5 justify-content-center">
         <input type="search" class="form-control mx-2 col-10 col-md-4 col-lg-1" placeholder="btc address" id="address" onsearch="searchAddress()"><br>
-        <button class="btn btn-outline-secondary" onclick="searchTransaction()">Search</button>
+        <button class="btn btn-outline-secondary" onclick="searchAddress()">Search</button>
     </div>
+    <form name="parameters" method="GET" action="address.html" target="_parent">
+        <p> Login:
+            <input type="text" name="address" value="">
+        </p>
+        <p>
+            <input type="submit" name="submit" value="Send data">
+        </p>
+    </form>
 
 </div>
 

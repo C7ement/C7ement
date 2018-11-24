@@ -3,5 +3,9 @@
 }
 
 .smCaps {
-    font-variant: small-caps;
+    font-variant: small-caps !important;
+}
+
+body {
+    font-family: monospace;
 }
