@@ -136,6 +136,15 @@ function displayAddress(addr,divT) {
     html += "</div>";
     div.innerHTML = html;
 
+    new QRCode(document.getElementById("qrcode"), {
+        text: addr.address,
+        width: 128,
+        height: 128,
+        colorDark : "#000000",
+        colorLight : "#ffffff",
+        correctLevel : QRCode.CorrectLevel.H
+    });
+
     for (i=0; i<addr.n_tx; i++) {
         displayTransactionInAddressPage(addr.txrefs[i],'transactionElement');
     }
@@ -149,9 +158,9 @@ function displayTransactionInAddressPage(tran,divT) {
     date = new Date(tran.confirmed);
 
     if(parseInt(tran.tx_input_n)<0) {
-    inOut = 'received';
+        inOut = 'received';
     } else {
-    inOut = 'sent';
+        inOut = 'sent';
     }
 
     html = "<div class='row justify-content-center mt-4 mb-5'>"+
@@ -203,7 +212,7 @@ function displayTransactionList(block) {
     for (i=0; i<block.n_tx; i++) {
         html += "<tr><td><a href='./transaction.html?transaction="+block.txids[i]+"'>"+block.txids[i]+"</a></td></tr>";
     }
-        html += "</table></div>";
+    html += "</table></div>";
     div.innerHTML += html;
 }
 

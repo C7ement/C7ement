@@ -9,11 +9,21 @@
             crossorigin="anonymous"></script>
     <script type="text/javascript" src="../js/blockExplorer.js" charset="utf-8"></script>
 
+    <script type="text/javascript" src="../js/qrcode.js"></script>
 </head>
 
 <body onload="processAddress()">
 
-<div id="addressElement" class="container-fluid"></div>
-<div id="transactionElement" class="container-fluid"></div>
-
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <h1 class="h2 mt-5 mb-4 smCaps">address data</h1>
+    </div>
+    <div class="row justify-content-center">
+        <div id="addressElement" class="container-fluid"></div>
+    </div>
+    <div id="qrcode" class='row justify-content-center mt-4 mb-5'></div>
+    <div class="row justify-content-center">
+        <div id="transactionElement" class="container-fluid"></div>
+    </div>
+</div>
 </body>
