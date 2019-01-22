@@ -4,7 +4,7 @@
     <title> Address </title>
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="../css/custom.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"
@@ -42,6 +42,22 @@
 
 <div class="container-fluid">
     <div class="row justify-content-center">
+        <h1 class="h2 mt-5 mb-4 smCaps">research an address</h1>
+
+        <div id="address1" class="container-fluid"></div>
+
+        <form class=" " name="parameters" method="GET" action="address.html" target="_parent">
+            <div class="form-row justify-content-center">
+                <div class="col-auto mx-3 my-2">
+                    <input type="text" class="form-control" placeholder="btc address" name="address" value="">
+                </div>
+                <div class="col-auto mx-3 my-2">
+                    <input type="submit" class="btn btn-outline-secondary" name="submit" value="Search">
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="row justify-content-center">
         <h1 class="h2 mt-5 mb-4 smCaps">address data</h1>
     </div>
     <div class="row justify-content-center">
@@ -51,5 +67,6 @@
     <div class="row justify-content-center">
         <div id="transactionElement" class="container-fluid"></div>
     </div>
+
 </div>
 </body>

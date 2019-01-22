@@ -81,40 +81,63 @@ function displayTransaction(tran,divT) {
     div = document.getElementById(divT);
 
     date = new Date(tran.received);
-
-    html = "<div class='row justify-content-center mt-4 mb-5'>"+
-        "<table class='table tabTran table-bordered text-center w-auto col-auto my-auto'>"+
-        "<tr><td class='align-middle' colspan='3'><b>"+tran.hash+"</b></td></tr>"+
-        "<tr>"+
-        "<td class='align-middle' rowspan='"+somme.toString()+"'>"+
-        "<p class='mt-3 mb-1'>"+date.toLocaleDateString()+"</p>"+
-        "<p class='mt-1 mb-3'>"+date.toLocaleTimeString()+"</p>"+
-        "<p class='mt-3 mb-1'>"+(tran.total/100000000).toLocaleString(undefined, {maximumSignificantDigits: 3})+" <a class='smCaps'>btc</a> sent</p>"+
-        "<p class='mt-1 mb-3'>Fees "+(tran.fees/100000000).toLocaleString(undefined, {maximumSignificantDigits: 3})+" <a class='smCaps'>btc</a></p>"+
-        "<p class='mt-3 mb-1'><a href='./block.html?block="+tran.block_height+"'>Block "+tran.block_height+"</a></p>"+
-        "<p class='mt-1 mb-3'>"+tran.confirmations+" confirmations</p></td>"+
-        "<td class='align-middle bgG' colspan='2'>Inputs</td>"+
-        "</tr>";
-    for (i=0; i<tran.inputs.length; i++) {
-        html += "<tr>"+
-            "<td class='align-middle'><a href='./address.html?address="+tran.inputs[i].addresses[0]+"'>"+tran.inputs[i].addresses[0]+"</a></td>"+
-            "<td class='align-middle'>"+
-            (tran.inputs[i].output_value/100000000).toLocaleString(undefined,{maximumSignificantDigits: 3})+" <a class='smCaps'>btc</a></td>"+
+    if (tran.confirmations==0) {
+        div.innerHTML += "<div class='row justify-content-center mt-4 mb-5'>Error</div>"
+    } else {
+        div.innerHTML += "<div class='row justify-content-center mt-4 mb-5'>"+tran.outputs.length+"</div>"
+        html = "<div class='row justify-content-center mt-4 mb-5'>"+
+            "<table class='table tabTran table-bordered text-center w-auto col-auto my-auto'>"+
+            "<tr><td class='align-middle' colspan='3'><b>"+tran.hash+"</b></td></tr>"+
+            "<tr>"+
+            "<td class='align-middle' rowspan='"+somme.toString()+"'>"+
+            "<p class='mt-3 mb-1'>"+date.toLocaleDateString()+"</p>"+
+            "<p class='mt-1 mb-3'>"+date.toLocaleTimeString()+"</p>"+
+            "<p class='mt-3 mb-1'>"+(tran.total/100000000).toLocaleString(undefined, {maximumSignificantDigits: 3})+" <a class='smCaps'>btc</a> sent</p>"+
+            "<p class='mt-1 mb-3'>Fees "+(tran.fees/100000000).toLocaleString(undefined, {maximumSignificantDigits: 3})+" <a class='smCaps'>btc</a></p>"+
+            "<p class='mt-3 mb-1'><a href='./block.html?block="+tran.block_height+"'>Block "+tran.block_height+"</a></p>"+
+            "<p class='mt-1 mb-3'>"+tran.confirmations+" confirmations</p></td>"+
+            "<td class='align-middle bgG' colspan='2'>Inputs</td>"+
             "</tr>";
-    }
+        for (i=0; i<tran.inputs.length; i++) {
+            console.log(tran.inputs[i].adresses)
+            if (tran.inputs[i].addresses==null) {
+                html += "<tr>"+"<td class='align-middle'><a>Unkown</a></td>"+
+                    "<td class='align-middle'>"+
+                    (tran.inputs[i].output_value/100000000).toLocaleString(undefined,{maximumSignificantDigits: 3})+" <a class='smCaps'>btc</a></td>"+
+                    "</tr>";
+            } else {
+                html += "<tr>"+"<td class='align-middle'><a href='./address.html?address="
+                    +tran.inputs[i].addresses[0]+"'>"+tran.inputs[i].addresses[0]+"</a></td>"+
+                    "<td class='align-middle'>"+
+                    (tran.inputs[i].output_value/100000000).toLocaleString(undefined,{maximumSignificantDigits: 3})+" <a class='smCaps'>btc</a></td>"+
+                    "</tr>";
+            }
+        }
+
 
     html += "<tr><td class='align-middle bgG' colspan='2'>Outputs</td></tr>";
 
     for (i=0; i<tran.outputs.length; i++) {
-        html += "<tr>"+
-            "<td class='align-middle'><a href='./address.html?address="+tran.outputs[i].addresses[0]+"'>"+tran.outputs[i].addresses[0]+"</a></td>"+
-            "<td class='align-middle'>"+
-            (tran.outputs[i].value/100000000).toLocaleString(undefined, {maximumSignificantDigits: 3})+" <a class='smCaps'>btc</a></td>"+
-            "</tr>";
+        console.log(tran.outputs[i].adresses)
+        if (tran.outputs[i].addresses==null) {
+            html += "<tr>"+
+                "<td class='align-middle'><a>Unkown</a></td>"+
+                "<td class='align-middle'>"+
+                (tran.outputs[i].value/100000000).toLocaleString(undefined, {maximumSignificantDigits: 3})+" <a class='smCaps'>btc</a></td>"+
+                "</tr>";
+        } else {
+            html += "<tr>" +
+                "<td class='align-middle'><a href='./address.html?address=" + tran.outputs[i].addresses[0] + "'>" + tran.outputs[i].addresses[0] + "</a></td>" +
+                "<td class='align-middle'>" +
+                (tran.outputs[i].value / 100000000).toLocaleString(undefined, {maximumSignificantDigits: 3}) + " <a class='smCaps'>btc</a></td>" +
+                "</tr>";
+        }
     }
     html += "</table>";
     html += "</div>";
     div.innerHTML += html;
+}
+
 }
 
 function displayAddress(addr,divT) {
@@ -210,7 +233,12 @@ function displayTransactionList(block) {
         "<table class='table tabTran table-bordered text-center w-auto col-auto my-auto'>"+
         "<tr><td>Transactions</td></tr>";
     for (i=0; i<block.n_tx; i++) {
-        html += "<tr><td><a href='./transaction.html?transaction="+block.txids[i]+"'>"+block.txids[i]+"</a></td></tr>";
+        if (block.txids[i]==null) {
+            html += "<tr><td><a>...</a></td></tr>";
+            break
+        } else {
+            html += "<tr><td><a href='./transaction.html?transaction=" + block.txids[i] + "'>" + block.txids[i] + "</a></td></tr>";
+        }
     }
     html += "</table></div>";
     div.innerHTML += html;
