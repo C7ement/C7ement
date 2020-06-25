@@ -3,14 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <title>CV</title>
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
 
     <style type="text/css">
 
-        <!-- https://www.sejda.com/fr/html-to-pdf -->
+        @page {
+            size: A4;
+            margin: 0;
+        }
+        @media print {
+            html {
+                margin: 0 !important;
+            }
+        }
+
+        .flex {display: flex;}
+        .column {flex-direction: column;}
 
         * { margin: 0; padding: 0; }
-        body {margin: 1cm auto; }
+        body {margin: 0; }
+        #left, #right {padding: 15px;}
         h1 {padding: 15px 5px 0px 5px; margin: 0px}
         h2 {padding: 10px 5px 10px 5px; margin: 0px; }
         h3 {padding: 30px 5px 10px 5px; margin: 0px}
@@ -20,31 +31,42 @@
         p {padding: 0px; margin: 0px;}
 
 
-        #left { height: 29.7cm; }
-        body {width: 21cm; min-height: 29.7cm;}
-        .c1{width:25%;}
-        .c2{width:2%;}
-        .c3{width:68%}
+        #left { height: 297mm; }
+        html {width: 220mm; min-height: 297mm; margin: 1cm auto;}
 
-        h2 {font-size: 20px;}
+
+        .experience .c1{width:30%;}
+        .experience .c2{width:2%;}
+        .experience .c3{width:68%;}
+
+        .projects .c1{width:10%;}
+        .projects .c2{width:2%;}
+        .projects .c3{width:88%;}
+
+        .education .c1{width:36%;}
+        .education .c2{width:2%;}
+        .education .c3{width:62%;}
+
+
         .rond {margin: 7px 7px 0px 7px; }
+
 
         #left h1 {border-bottom: 1px solid white; }
         #left h3 {border-bottom: 1px solid white; }
         #right h3 {border-top: 1px solid lightgrey; }
 
-        #left h1 {font-size: 26px; }
-        #left h3 {font-size: 18px }
-        #right h1 {font-size: 26px; }
-        #right h2 {font-size: 20px; }
-        #right h3 {font-size: 18px; }
-        h2 {font-size: 20px; }
+        body {font-size: 12px; font-family: Helvetica, Sans-Serif;}
 
-        body {font: 12px Helvetica, Sans-Serif; line-height: 24px; }
-        #right{line-height: 19px;}
-        h2 {font-size: 20px; }
-        b {font-size: 12px; }
+        #left h1 {font-size: 25px; font-weight: 500;}
+        #left h2 {font-size: 20px; font-weight: 500;}
+        #left h3 {font-size: 18px; font-weight: bolder;}
+        #right h1 {font-size: 26px; font-weight: 500;}
+        #right h2 {font-size: 20px; font-weight: 500;}
+        #right h3 {font-size: 18px; font-weight: 500;}
 
+        body {line-height: 24px;}
+        #right {line-height: 19px;}
+        h1, h2, h3 {line-height: 1.2;}
         #left {background-color:  #c0392b; color: white; }
         #left ul {list-style-type: none; }
         table{border-collapse: separate; }
@@ -55,20 +77,22 @@
         .description{text-align: justify; }
 
         .rond {width:10px; height:10px; border-radius:50%; background: #c0392b;}
+        a {
+            color: blue;
+        }
     </style>
 </head>
 
 <body>
 
-<div class="row">
+<div class="flex">
 
-    <div id="left" class="container-fluid col-4">
+    <div id="left" class="flex column">
 
         <div id="information">
             <h1>Clément Labonne</h1>
             <ul>
                 <li>clement.labonne@ecole.ensicaen.fr</li>
-                <li>9 rue aux Juifs, 14000 Caen, France</li>
                 <li>06 95 60 17 28</li>
                 <li>07/10/1997</li>
                 <li>Permis de conduire</li>
@@ -79,7 +103,7 @@
             <h3>Compétences</h3>
             <ul>
                 <li><b>Langages de programmation : </b><br> C, C++, JS, Java, Python </li>
-                <li><b>Frameworks & Technologies : </b><br> NodeJS, Android, MySQL, Bootstrap</li>
+                <li><b>Frameworks & Technologies : </b><br> NodeJS, Android, MySQL, VueJS</li>
             </ul>
         </div>
         <div id="languages">
@@ -87,7 +111,6 @@
             <ul>
                 <li><b>Anglais :</b> TOEIC 805, bilingue</li>
                 <li><b>Espagnol :</b> Niveau moyen</li>
-                <li><b>Chinois :</b> Débutant</li>
             </ul>
         </div>
         <div id="Hobbies">
@@ -95,29 +118,41 @@
             <ul>
                 <li><b>Informatique : </b> Sécurité & Cryptographie, Réseaux Scociaux, Blockchain</li>
                 <li><b>Autre Sciences : </b> Géopolitique, Intelligence Économique, Sociologie</li>
-                <li><b>Divers : </b> Poker, Musique (Bénévole)</li>
+                <li><b>Divers : </b> Poker, Musique</li>
             </ul>
             </ul>
         </div>
     </div>
 
     <!-- ------------------------------------- LEFT RIGHT ------------------------------------- -->
-    <div id="right" class="container-fluid col-8" class="case">
+    <div id="right" class="flex column" class="case">
 
         <div id="presentation">
-            <h1>Étudiant Ingénieur en Informatique</h1>
-            <h2>A la recherche d'un stage de 6 mois à partir de mars</h2>
+            <h1>Ingénieur en Informatique</h1>
+            <h2>A la recherche d'un premier emploi, octobre</h2>
         </div>
 
-        <div id="Experience" class="case">
+        <div id="experience" class="case experience">
             <h3>Expérience</h3>
             <table>
 
                 <tr>
                     <td class="c1">
+                        <b>Thales Service</b><br>
+                        Aix-en-Provence<br>
+                        Mars - Août 2020
+                    </td>
+                    <td class="c2"><div class="rond"></div></td>
+                    <td class="c3">
+                        <b>Stage de 6 mois.</b><br>
+                        Développement de solutions utilisant la blockchain.<br>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="c1">
                         <b>Kingston University</b><br>
                         Londres, Royaume-Uni<br>
-                        Mai-Août 2019
+                        Mai - Août 2019
                     </td>
                     <td class="c2"><div class="rond"></div></td>
                     <td class="c3">
@@ -129,8 +164,7 @@
                 <tr>
                     <td class="c1">
                         <b>GREYC</b><br>
-                        Caen, France<br>
-                        Juin 2018
+                        Caen | Juin 2018
                     </td>
                     <td class="c2"><div class="rond"></div></td>
                     <td class="c3">
@@ -141,8 +175,7 @@
                 <tr>
                     <td class="c1">
                         <b>ENSICAEN</b><br>
-                        Caen, France<br>
-                        2017-2019
+                        Caen | 2017 - 2019
                     </td>
                     <td class="c2"><div class="rond"></div></td>
                     <td class="c3">
@@ -154,7 +187,7 @@
             </table>
 
         </div>
-        <div id="projects" class="case">
+        <div id="projects" class="case projects">
             <h3>Projets Personnels</h3>
             <table>
 
@@ -193,26 +226,13 @@
         </div>
 
 
-        <div id="Education" class="case">
+        <div id="Education" class="case education">
             <h3>Formation</h3>
             <table>
                 <tr>
                     <td class="c1">
-                        <b>ENSICAEN</b><br>
-                        Caen, France<br>
-                        2017-2020
-                    </td>
-                    <td class="c2"><div class="rond"></div></td>
-                    <td class="c3">
-                        <b>Étudiant Ingénieur Informatique.</b>
-                        <br>Option E-Paiement et CyberSécurité
-                    </td>
-                </tr>
-                <tr>
-                    <td class="c1">
                         <b>Université de Caen</b><br>
-                        Caen, France<br>
-                        2019-2020
+                        Caen | 2019 - 2020
                     </td>
                     <td class="c2"><div class="rond"></div></td>
                     <td class="c3">
@@ -222,9 +242,19 @@
                 </tr>
                 <tr>
                     <td class="c1">
-                        <b>Lycée<br> Déodat de Séverac</b><br>
-                        Toulouse, France<br>
-                        2015-2017
+                        <b>ENSICAEN</b><br>
+                        Caen | 2017 - 2020
+                    </td>
+                    <td class="c2"><div class="rond"></div></td>
+                    <td class="c3">
+                        <b>Étudiant Ingénieur Informatique.</b>
+                        <br>Option E-Paiement et CyberSécurité
+                    </td>
+                </tr>
+                <tr>
+                    <td class="c1">
+                        <b>Lycée Déodat de Séverac</b><br>
+                        Toulouse | 2015 - 2017
                     </td>
                     <td class="c2"><div class="rond"></div></td>
                     <td class="c3">
@@ -234,8 +264,7 @@
                 <tr>
                     <td class="c1">
                         <b>Lycée Pierre Bourdieu</b><br>
-                        Fronton, France<br>
-                        2012-2015
+                        Fronton | 2012 - 2015
                     </td>
                     <td class="c2"><div class="rond"></div></td>
                     <td class="c3">
