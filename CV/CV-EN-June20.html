@@ -1,85 +1,233 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>CV</title>
 
     <style type="text/css">
-
         @page {
             size: A4;
             margin: 0;
         }
+
         @media print {
             html {
                 margin: 0 !important;
             }
         }
 
-        .flex {display: flex;}
-        .column {flex-direction: column;}
+        .flex {
+            display: flex;
+        }
 
-        * { margin: 0; padding: 0; }
-        body {margin: 0; }
-        #left, #right {padding: 15px;}
-        h1 {padding: 15px 5px 0px 5px; margin: 0px}
-        h2 {padding: 10px 5px 10px 5px; margin: 0px; }
-        h3 {padding: 30px 5px 10px 5px; margin: 0px}
-        #left ul {padding: 10px 10px; }
-        .case{padding: 0px 0px 25px 0px }
-        td {padding: 3px 0px !important }
-        p {padding: 0px; margin: 0px;}
+        .column {
+            flex-direction: column;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            margin: 0;
+        }
+
+        #left,
+        #right {
+            padding: 15px;
+        }
+
+        h1 {
+            padding: 15px 5px 0px 5px;
+            margin: 0px
+        }
+
+        h2 {
+            padding: 10px 5px 10px 5px;
+            margin: 0px;
+        }
+
+        h3 {
+            padding: 30px 5px 10px 5px;
+            margin: 0px;
+        }
+
+        #left ul {
+            padding: 10px 10px;
+        }
+
+        .case {
+            padding: 0px 0px 25px 0px
+        }
+
+        td {
+            padding: 3px 0px !important
+        }
+
+        p {
+            padding: 0px;
+            margin: 0px;
+        }
 
 
-        #left { height: 297mm; }
-        html {width: 220mm; min-height: 297mm; margin: 1cm auto;}
+        #left {
+            height: 310mm;
+        }
+
+        html {
+            width: 220mm;
+            min-height: 297mm;
+            margin: 1cm auto;
+        }
 
 
-        .experience .c1{width:30%;}
-        .experience .c2{width:2%;}
-        .experience .c3{width:68%;}
+        .experience .c1 {
+            width: 21%;
+        }
 
-        .projects .c1{width:10%;}
-        .projects .c2{width:2%;}
-        .projects .c3{width:88%;}
+        .experience .c2 {
+            width: 2%;
+        }
 
-        .education .c1{width:38%;}
-        .education .c2{width:2%;}
-        .education .c3{width:60%;}
+        .experience .c3 {
+            width: 77%;
+        }
 
-        .rond {margin: 7px 7px 0px 7px; }
+        .projects .c1 {
+            width: 30%;
+        }
+
+        .projects .c2 {
+            width: 2%;
+        }
+
+        .projects .c3 {
+            width: 68%;
+        }
+
+        .education .c1 {
+            width: 26%;
+        }
+
+        .education .c2 {
+            width: 2%;
+        }
+
+        .education .c3 {
+            width: 72%;
+        }
 
 
-        #left h1 {border-bottom: 1px solid white; }
-        #left h3 {border-bottom: 1px solid white; }
-        #right h3 {border-top: 1px solid lightgrey; }
+        .rond {
+            margin: 7px 7px 0px 7px;
+        }
 
-        body {font-size: 12px; font-family: Helvetica, Sans-Serif;}
 
-        #left h1 {font-size: 25px; font-weight: 500;}
-        #left h2 {font-size: 20px; font-weight: 500;}
-        #left h3 {font-size: 18px; font-weight: bolder;}
-        #right h1 {font-size: 26px; font-weight: 500;}
-        #right h2 {font-size: 20px; font-weight: 500;}
-        #right h3 {font-size: 18px; font-weight: 500;}
+        #left h1 {
+            border-bottom: 1px solid white;
+        }
 
-        body {line-height: 24px;}
-        #right {line-height: 19px;}
-        h1, h2, h3 {line-height: 1.2;}
-        #left {background-color:  #c0392b; color: white; }
-        #left ul {list-style-type: none; }
-        table{border-collapse: separate; }
-        td {vertical-align: top;}
-        .c1{text-align: right;}
-        .c2{text-align: center;}
+        #left h3 {
+            border-bottom: 1px solid white;
+        }
 
-        .description{text-align: justify; }
+        #right h3 {
+            border-top: 1px solid lightgrey;
+        }
 
-        .rond {width:10px; height:10px; border-radius:50%; background: #c0392b;}
+        body {
+            font-size: 12px;
+            font-family: Helvetica, Sans-Serif;
+        }
+
+        #left h1 {
+            font-size: 25px;
+            font-weight: 500;
+        }
+
+
+        #left h2 {
+            font-size: 20px;
+            font-weight: 500;
+        }
+
+        #left h3 {
+            font-size: 18px;
+            font-weight: bolder;
+        }
+
+        #right h1 {
+            font-size: 26px;
+            font-weight: 500;
+        }
+
+        #right h2 {
+            font-size: 15px;
+            font-weight: 300;
+        }
+
+        #right h3 {
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        body {
+            line-height: 24px;
+        }
+
+        #right {
+            line-height: 19px;
+        }
+
+        h1,
+        h2,
+        h3 {
+            line-height: 1.2;
+        }
+
+        #left {
+            background-color: #1f368b;
+            ;
+            color: white;
+        }
+
+        #left ul {
+            list-style-type: none;
+        }
+
+        table {
+            border-collapse: separate;
+        }
+
+        td {
+            vertical-align: top;
+        }
+
+        .c1 {
+            text-align: right;
+        }
+
+        .c2 {
+            text-align: center;
+        }
+
+        .description {
+            text-align: justify;
+        }
+
+        .rond {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #1f368b;
+            ;
+        }
+
         a {
             color: blue;
         }
-
     </style>
 </head>
 
@@ -90,47 +238,95 @@
     <div id="left" class="flex column">
 
         <div id="information">
-            <h1>Clément Labonne</h1>
+            <h1 id="name">Clément Labonne</h1>
             <ul>
                 <li>clem.labonne@laposte.net</li>
                 <li>+33 6 95 60 17 28</li>
                 <li>07/10/1997</li>
-                <li>Driver Licence</li>
+                <li>Driver's License, Car</li>
             </ul>
         </div>
 
         <div id="skills">
             <h3>Skills</h3>
             <ul>
-                <li><b>Programming languages : </b><br> C, C++, JS, Java, Python </li>
-                <li><b>Frameworks & Technologies : </b><br> NodeJS, Android, MySQL, VueJS</li>
-                <li><b>Others : </b><br> Software architecture, Algorithmic</li>
+                <li><b>Programming Languages:</b><br> C, C++, JavaScript/TypeScript, Java, Python, Dart</li>
+                <li><b>Frameworks & Technologies:</b><br> NodeJS, Android, PostgreSQL, NoSQL, VueJS, Flutter</li>
             </ul>
         </div>
         <div id="languages">
             <h3>Languages</h3>
             <ul>
-                <li><b>French :</b> Mother tongue </li>
-                <li><b>English :</b> TOEIC 805, bilingual</li>
-                <li><b>Spanish :</b> Intermediate level</li>
+                <li><b>French:</b> Native Speaker</li>
+                <li><b>English:</b> TOEIC 805, bilingual</li>
+                <li><b>Spanish:</b> Intermediate level</li>
             </ul>
         </div>
         <div id="Hobbies">
-            <h3>Activities and Interests</h3>
+            <h3>Interests</h3>
             <ul>
-                <li><b>Computer science : </b> Security & Cryptography, Social networks, Blockchain</li>
-                <li><b>Other sciences : </b> Geopolitics, Economic intelligence, Sociology</li>
-                <li><b>Various : </b> Poker, Music</li>
+                <li><b>Computer Science:</b> Security & Cryptography, Social Networks, Blockchain</li>
+                <li><b>Other Sciences:</b> Geopolitics, Business Intelligence, Sociology</li>
+                <li><b>Various:</b> Poker, Music</li>
             </ul>
         </div>
     </div>
-
     <!-- ------------------------------------- LEFT RIGHT ------------------------------------- -->
+
     <div id="right" class="flex column" class="case">
 
         <div id="presentation">
-            <h1>Engineer In Computer Science</h1>
-            <h2>Looking for a full time job starting in October</h2>
+            <h1>Mobile Software Engineer</h1>
+            <h2><i>Seeking a mission in mobile development. Available immediately.</i></h2>
+        </div>
+
+
+        <div id="Education" class="case education">
+            <h3>Education</h3>
+            <table>
+                <td class="c1">
+                    <b>ENSICAEN</b><br>
+                    Caen | 2017 - 2020
+                </td>
+                <td class="c2">
+                    <div class="rond"></div>
+                </td>
+                <td class="c3">
+                    <b>Computer Engineering (Monetics)</b>
+                    <br>Specialization in <b>E-Payment and Cybersecurity</b>
+                    <br><i>Project management, software architecture, banking systems, cryptography, and security.</i>
+                </td>
+                </tr>
+
+                <tr>
+                    <td class="c1">
+                        <b>University of Caen<br></b>
+                        Caen | 2019 - 2020
+                    </td>
+                    <td class="c2">
+                        <div class="rond"></div>
+                    </td>
+                    <td class="c3">
+                        <b>Master's in E-Secure</b><br>
+                        Supplementary master's degree to the engineering program.<br>
+                        <i>Computer system security, cryptography.</i>
+                    </td>
+                </tr>
+                <tr>
+                <tr>
+                    <td class="c1">
+                        <b>Lycée Déodat de Séverac<br></b>
+                        Toulouse | 2015 - 2017
+                    </td>
+                    <td class="c2">
+                        <div class="rond"></div>
+                    </td>
+                    <td class="c3">
+                        <b>Intensive program preparing for admission to French engineering schools.</b>
+                    </td>
+                </tr>
+            </table>
+
         </div>
 
         <div id="experience" class="case experience">
@@ -139,63 +335,89 @@
 
                 <tr>
                     <td class="c1">
-                        <b>Wimi</b><br>
-                        Paris, France<br>
-                        October 2020 - Now
+                        <b>Fleurs D'Ici<br></b>
+                        Paris<br>
+                        Feb 2023
                     </td>
-                    <td class="c2"><div class="rond"></div></td>
+                    <td class="c2">
+                        <div class="rond"></div>
+                    </td>
                     <td class="c3">
-                        <b>Full-Time Position</b><br>
-                        Fullstack Developer.<br>
-                        Flutter, Android, NodeJS, PostgresSQL<br>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td class="c1">
-                        <b>Thales Service</b><br>
-                        Aix-en-Provence, France<br>
-                        March - August 2020
-                    </td>
-                    <td class="c2"><div class="rond"></div></td>
-                    <td class="c3">
-                        <b>6 Month internship.</b><br>
-                        Development of solutions using blockchain technologies.<br>
-                        AWS, MultiChain, Android<br>
+                        <b>Android / iOS Mobile Lead</b><br>
+                        Developer for a local flower commerce company
+                        <br>
+                        <i>Android, Kotlin, Jetpack Compose, SwiftUI</i>
                     </td>
                 </tr>
                 <tr>
                     <td class="c1">
-                        <b>Kingston University</b><br>
-                        London, United Kingdom<br>
-                        May-August 2019
+                        <b>Wimi<br></b>
+                        Paris<br>
+                        Oct 2020 - Nov 2022
                     </td>
-                    <td class="c2"><div class="rond"></div></td>
+                    <td class="c2">
+                        <div class="rond"></div>
+                    </td>
                     <td class="c3">
-                        <b>4 Month internship.</b><br>
-                        Development of an energy storage scheduling solution on the blokchain.<br>
-                        <a href="https://github.com/C7ement/hyperledgerComposerNetwork">https://github.com/C7ement/hyperledgerComposerNetwork </a>
+                        <b>Full-stack Developer / Mobile Lead</b><br>
+                        Developer for a teamworking platform that includes chat, video conferencing,
+                        agenda, and document storage/editing.
+                        <br>
+                        <i>Flutter, Android, TypeScript, NodeJS, PostgreSQL</i>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="c1">
+                        <b>Thales</b><br>
+                        Aix-en-Provence<br>
+                        Mar - Aug 2020
+                    </td>
+                    <td class="c2">
+                        <div class="rond"></div>
+                    </td>
+                    <td class="c3">
+                        <b>Software Engineer Intern</b><br>
+                        Proof Of Concept for tracking goods containers. The containers are identified
+                        using NFC tags. Their status and location are stored on a blockchain.<br>
+                        <i>AWS, Android, MultiChain</i>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="c1">
+                        <b>Kingston University<br></b>
+                        London<br>
+                        May - Aug 2019
+                    </td>
+                    <td class="c2">
+                        <div class="rond"></div>
+                    </td>
+                    <td class="c3">
+                        <b>Software Engineer Intern</b><br>
+                        Since renewable energies are not controllable, it is necessary to store the excess energy produced.
+                        I implemented a decentralized electricity storage solution on a blockchain, allowing individuals to be rewarded for energy storage.
                     </td>
                 </tr>
                 <tr>
                     <td class="c1">
                         <b>GREYC</b><br>
-                        Caen, France<br>
-                        June 2018
+                        Caen | Jun 2018
                     </td>
-                    <td class="c2"><div class="rond"></div></td>
+                    <td class="c2">
+                        <div class="rond"></div>
+                    </td>
                     <td class="c3">
-                        <b>1 Month internship in a research laboratory.</b><br>
-                        Effective implementation of hash functions.
+                        <b>Research Intern</b><br>
+                        Implementation of hash functions and exploitation of vulnerabilities in SHA-1.
                     </td>
                 </tr>
                 <tr>
                     <td class="c1">
                         <b>ENSICAEN</b><br>
-                        Caen, France<br>
-                        2017 - 2019
+                        Caen | 2017 - 2019
                     </td>
-                    <td class="c2"><div class="rond"></div></td>
+                    <td class="c2">
+                        <div class="rond"></div>
+                    </td>
                     <td class="c3">
                         <b>Elected student on the school management board.</b><br>
                         Participation in the voting of administrative decisions.
@@ -205,96 +427,74 @@
             </table>
 
         </div>
-        <div id="projects" class="case projects">
-            <h3>Personals Projects</h3>
-            <table>
+        <h3>Personal Projects</h3>
+        <table>
 
-                <tr>
-                    <td class="c1">2019</td>
-                    <td class="c2"><div class="rond"></div></td>
-                    <td class="c3">
-                        <b>Android mail client.</b><br>
-                        <a href="https://github.com/C7ement/MailApp">https://github.com/C7ement/MailApp </a><br>
-                        <p class="description">Realization of a classic mail client in order to customize it and add new features.</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="c1">2019</td>
-                    <td class="c2"><div class="rond"></div></td>
-                    <td class="c3">
-                        <b>Poloniex triangular arbitrage bot.</b><br>
-                        <a href="https://github.com/C7ement/arbitrageBot">https://github.com/C7ement/arbitrageBot </a><br>
-                        <p class="description">Arbitrage bot using the API of the cryptocurrency trading platform
-                            Poloniex. It constantly computes the potential opportunities and then executes them.</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="c1">2018</td>
-                    <td class="c2"><div class="rond"></div></td>
-                    <td class="c3">
-                        <b>Bitcoin block explorer.</b><br>
-                        <a href="https://c7ement.github.io/C7ement/blockchain/index.html">https://c7ement.github.io/C7ement/blockchain/index.html</a><br>
-                        <p class="description">This block explorer can display information about blocks,
-                            transactions and addresses of the Bitcoin blockchain.</p>
-                    </td>
-                </tr>
-            </table>
+            <tr>
+                <td class="c1">
+                    <b>Wikigu</b><br>2022
+                </td>
+                <td class="c2">
+                    <div class="rond"></div>
+                </td>
+                <td class="c3">
 
-        </div>
+                    <p class="description">Mobile application for scoring a card game called "donut" (similar to Rummy) and viewing scores in real-time. <i>Flutter</i></p>
+                </td>
+            </tr>
+            <tr>
+                <td class="c1">
+                    <b>Youtube Mobile Client   </b>2021
+                </td>
+                <td class="c2">
+                    <div class="rond"></div>
+                </td>
+                <td class="c3">
 
+                    <p class="description">Mobile application for sorting videos from the YouTube feed (subscriptions) to save videos for later viewing. <i>Flutter</i></p>
+                </td>
+            </tr>
+            <tr>
+                <td class="c1">
+                    <b>Android Email Client  </b>
+                    2019
+                </td>
+                <td class="c2">
+                    <div class="rond"></div>
+                </td>
+                <td class="c3">
 
-        <div id="Education" class="case education">
-            <h3>Education</h3>
-            <table>
-                <tr>
-                    <td class="c1">
-                        <b>University of Caen</b><br>
-                        Caen, France | 2019 - 2020
-                    </td>
-                    <td class="c2"><div class="rond"></div></td>
-                    <td class="c3">
-                        <b>Master E-Secure.</b>
-                        <br>Security of computer systems.
-                    </td>
-                </tr>
-                <tr>
-                    <td class="c1">
-                        <b>ENSICAEN</b><br>
-                        Caen, France | 2017 - 2020
-                    </td>
-                    <td class="c2"><div class="rond"></div></td>
-                    <td class="c3">
-                        <b>Graduate Engineering school.</b>
-                        <br>Master of Engineering in Computer Sciences, Major in E-Payment and Cybersecurity
-                    </td>
-                </tr>
-                <tr>
-                    <td class="c1">
-                        <b>Lycée Déodat de Séverac</b><br>
-                        Toulouse, France | 2015 - 2017
-                    </td>
-                    <td class="c2"><div class="rond"></div></td>
-                    <td class="c3">
-                        <b>Intensive program preparing for admission to French engineering schools.</b><br>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="c1">
-                        <b>Lycée Pierre Bourdieu</b><br>
-                        Fronton, France | 2012 - 2015
-                    </td>
-                    <td class="c2"><div class="rond"></div></td>
-                    <td class="c3">
-                        <b>Baccalauréat with honours, equivalent to French secondary school diploma in sciences</b>
-                    </td>
-                </tr>
-            </table>
+                    <p class="description">Developed a customizable email client with added functionalities.</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="c1">
+                    <b>Arbitrage Bot on Poloniex   </b><br>
+                </td>
+                <td class="c2">
+                    <div class="rond"></div>
+                </td>
+                <td class="c3">
 
-        </div>
+                    <p class="description">Triangular arbitrage bot using the API of a cryptocurrency exchange platform.</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="c1"><b>Bitcoin Block Explorer   </b>
+                    2018</td>
+                <td class="c2">
+                    <div class="rond"></div>
+                </td>
+                <td class="c3">
+                    <p class="description">Explorer for viewing information about blocks, transactions, and wallets in the blockchain.</p>
+                </td>
+            </tr>
+        </table>
 
 
     </div>
 </div>
 
 </body>
+
 </html>
